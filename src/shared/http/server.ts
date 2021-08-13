@@ -6,6 +6,7 @@ import 'dotenv/config';
 import router from './routes';
 import '@shared/typeorm';
 import { ApplicationError } from '@shared/errors/ApplicationError';
+import { errors } from 'celebrate';
 
 const app = express();
 
@@ -13,6 +14,9 @@ app.use(express.json());
 app.use(cors());
 
 app.use(router);
+
+// middleware de verificaçãoo dos parametros da requisição
+app.use(errors());
 
 // middleware de tratamento de erros assíncronos
 app.use(
