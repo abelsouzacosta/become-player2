@@ -4,6 +4,7 @@ import 'express-async-errors';
 import cors from 'cors';
 import 'dotenv/config';
 import router from './routes';
+import '@shared/typeorm';
 
 const app = express();
 
