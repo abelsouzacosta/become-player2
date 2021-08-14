@@ -2,8 +2,9 @@
 
 ### Estrutura da aplicação
 
-✅ Autenticação de usuário
-✅ Cadastro de empresas, obtendo todos os dados a partir do [BrasilAPI](https://brasilapi.com.br/)
+:ballot_box_with_check: Autenticação de usuário
+
+:ballot_box_with_check: Cadastro de empresas, obtendo os dados a partir do [BrasilAPI](https://brasilapi.com.br/)
 
 ### Tecnologias Utilizadas
 
