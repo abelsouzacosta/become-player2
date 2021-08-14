@@ -30,5 +30,5 @@ number -> numero
 complement -> complemento
 district -> bairro
 cep -> cep
-fu -> uf
+federative_unit -> uf
 city -> municipio

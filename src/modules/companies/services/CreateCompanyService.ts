@@ -24,6 +24,7 @@ export default class CreateCompanyService {
     // retorna os dados da empresa
     const response = await this.companyService.execute({ cnpj_number });
 
+    // desestruturando a resposta da api
     const {
       cnpj,
       razao_social,
