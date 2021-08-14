@@ -13,6 +13,11 @@ export class CreateCompanies1628951560702 implements MigrationInterface {
             generationStrategy: 'uuid',
           },
           {
+            name: 'cnpj',
+            type: 'varchar',
+            isUnique: true,
+          },
+          {
             name: 'corporate_name',
             type: 'varchar',
           },
