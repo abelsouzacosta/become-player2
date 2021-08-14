@@ -7,28 +7,7 @@
 
 ### Tecnologias Utilizadas
 
-- typescriptJava
-
-Scala
-
-JavaScript
-
-Spring Boot
-
-Kubernetes
-
-Docker
-
-Mysql
-
-MongoDB
-
-Postgresql
-
-AWS
-
-Angular
-
+- typescript
 - typeorm
 - express
 - axios
