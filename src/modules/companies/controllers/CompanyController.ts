@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import CompanyDetailsService from '../services/CompanyDetailsService';
 import CreateCompanyService from '../services/CreateCompanyService';
 import ListCompaniesService from '../services/ListCompaniesService';
 
@@ -17,6 +18,19 @@ export default class CompanyController {
     const create = new CreateCompanyService();
 
     const company = await create.execute({ cnpj_number: cnpj });
+
+    return response.status(200).json(company);
+  }
+
+  public async details(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
+    const { id } = request.params;
+
+    const details = new CompanyDetailsService();
+
+    const company = await details.execute({ id });
 
     return response.status(200).json(company);
   }

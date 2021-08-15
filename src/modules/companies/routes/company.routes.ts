@@ -8,4 +8,6 @@ router.get('/', controller.list);
 
 router.post('/', controller.create);
 
+router.get('/:id', controller.details);
+
 export default router;
