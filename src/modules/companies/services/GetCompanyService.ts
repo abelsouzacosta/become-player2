@@ -18,6 +18,14 @@ export default class GetCompanyService {
         nome_fantasia,
         descricao_situacao_cadastral,
         cnae_fiscal_descricao,
+        descricao_tipo_logradouro,
+        logradouro,
+        bairro,
+        cep,
+        municipio,
+        complemento,
+        numero,
+        uf,
       } = data;
 
       return {
@@ -26,6 +34,14 @@ export default class GetCompanyService {
         nome_fantasia,
         descricao_situacao_cadastral,
         cnae_fiscal_descricao,
+        descricao_tipo_logradouro,
+        logradouro,
+        bairro,
+        cep,
+        municipio,
+        complemento,
+        numero,
+        uf,
       };
     } catch (error) {
       throw new ApplicationError(`Company not found`);

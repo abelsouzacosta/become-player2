@@ -4,15 +4,19 @@ import CompaniesRepository from '../typeorm/repositories/CompaniesRepositories';
 import Companies from '../typeorm/entities/Companies';
 import IGetCompany from '../interfaces/IGetCompany';
 import GetCompanyService from './GetCompanyService';
+import CreateCompanyAddressService from './CreateCompanyAddressService';
 
 export default class CreateCompanyService {
   private repository: CompaniesRepository;
 
   private companyService: GetCompanyService;
 
+  private addressService: CreateCompanyAddressService;
+
   constructor() {
     this.repository = getCustomRepository(CompaniesRepository);
     this.companyService = new GetCompanyService();
+    this.addressService = new CreateCompanyAddressService();
   }
 
   public async execute({ cnpj_number }: IGetCompany): Promise<Companies> {
@@ -31,6 +35,14 @@ export default class CreateCompanyService {
       nome_fantasia,
       descricao_situacao_cadastral,
       cnae_fiscal_descricao,
+      bairro,
+      complemento,
+      descricao_tipo_logradouro,
+      cep,
+      numero,
+      logradouro,
+      municipio,
+      uf,
     } = response;
 
     // cria a instância da empresa
@@ -47,6 +59,19 @@ export default class CreateCompanyService {
       throw new ApplicationError(
         'There was an error trying to create company instance',
       );
+
+    // cria o instância do endereço
+    const company_address = await this.addressService.execute({
+      descricao_tipo_logradouro,
+      logradouro,
+      complemento,
+      bairro,
+      numero,
+      municipio,
+      cep,
+      uf,
+      company_id: company.id,
+    });
 
     return company;
   }

@@ -2,9 +2,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import Companies from './Companies';
 
 @Entity('company_address')
 export default class CompanyAddress {
@@ -40,4 +43,11 @@ export default class CompanyAddress {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @Column()
+  company_id: string;
+
+  @OneToOne(() => Companies)
+  @JoinColumn({ name: 'company_id' })
+  company: Companies;
 }
