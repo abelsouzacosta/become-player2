@@ -14,4 +14,6 @@ router.put('/:id', controller.update);
 
 router.put('/update_address/:id', controller.updateAddress);
 
+router.put('/update_phones/:id', controller.updatePhones);
+
 export default router;

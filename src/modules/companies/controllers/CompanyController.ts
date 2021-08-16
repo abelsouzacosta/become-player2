@@ -3,6 +3,7 @@ import CompanyDetailsService from '../services/CompanyDetailsService';
 import CreateCompanyService from '../services/CreateCompanyService';
 import ListCompaniesService from '../services/ListCompaniesService';
 import UpdateCompanyAddressService from '../services/UpdateCompanyAddressService';
+import UpdateCompanyPhoneService from '../services/UpdateCompanyPhoneService';
 import UpdateCompanyService from '../services/UpdateCompanyService';
 
 export default class CompanyController {
@@ -92,5 +93,24 @@ export default class CompanyController {
     });
 
     return response.status(200).json(address);
+  }
+
+  public async updatePhones(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
+    const { id } = request.params;
+    const { ddd_telefone_1, ddd_telefone_2, ddd_fax } = request.body;
+
+    const updatePhones = new UpdateCompanyPhoneService();
+
+    const phones = await updatePhones.execute({
+      id,
+      ddd_telefone_1,
+      ddd_telefone_2,
+      ddd_fax,
+    });
+
+    return response.status(200).json(phones);
   }
 }
