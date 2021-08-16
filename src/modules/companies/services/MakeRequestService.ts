@@ -16,6 +16,9 @@ interface IResponse {
   cep: string;
   uf: string;
   municipio: string;
+  ddd_telefone_1: string;
+  ddd_telefone_2: string;
+  ddd_fax: string;
 }
 
 interface IRequest {

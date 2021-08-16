@@ -3,6 +3,7 @@ import { getCustomRepository } from 'typeorm';
 import Company from '../typeorm/entities/Company';
 import MakeRequestService from './MakeRequestService';
 import CreateCompanyAddressService from './CreateCompanyAddressService';
+import CreateCompanyPhoneService from './CreateCompanyPhoneService';
 import CompanyRepository from '../typeorm/repositories/CompanyRepository';
 
 interface ICompanyCreate {
@@ -16,10 +17,13 @@ export default class CreateCompanyService {
 
   private createAddress: CreateCompanyAddressService;
 
+  private createPhone: CreateCompanyPhoneService;
+
   constructor() {
     this.repository = getCustomRepository(CompanyRepository);
     this.request = new MakeRequestService();
     this.createAddress = new CreateCompanyAddressService();
+    this.createPhone = new CreateCompanyPhoneService();
   }
 
   public async execute({ cnpj_number }: ICompanyCreate): Promise<Company> {
@@ -46,6 +50,9 @@ export default class CreateCompanyService {
       nome_fantasia,
       descricao_situacao_cadastral,
       cnae_fiscal_descricao,
+      ddd_telefone_1,
+      ddd_telefone_2,
+      ddd_fax,
     } = data;
 
     // cria a instancia do endereco
@@ -60,8 +67,17 @@ export default class CreateCompanyService {
       municipio,
     });
 
+    // cria a instancia do contato telefonico
+    const phones = await this.createPhone.execute({
+      ddd_telefone_1,
+      ddd_telefone_2,
+      ddd_fax,
+    });
+
     // desestrutura o id do endereco
     const { id: address_id } = address;
+    // desestrutura o id do telefone
+    const { id: phone_id } = phones;
 
     // cria a instãncia de empresa
     const company = this.repository.create({
@@ -71,6 +87,7 @@ export default class CreateCompanyService {
       descricao_situacao_cadastral,
       cnae_fiscal_descricao,
       address_id,
+      phone_id,
     });
 
     // salva a instancia

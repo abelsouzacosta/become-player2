@@ -8,6 +8,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import CompanyAddress from './CompanyAddress';
+import CompanyPhone from './CompanyPhone';
 
 @Entity('companies')
 export default class Company {
@@ -35,10 +36,17 @@ export default class Company {
   @UpdateDateColumn()
   updated_at: Date;
 
-  // @Column()
-  // address_id: string;
+  @Column()
+  address_id: string;
 
-  // @OneToOne(() => CompanyAddress)
-  // @JoinColumn({ name: 'address_id' })
-  // address: CompanyAddress;
+  @Column()
+  phone_id: string;
+
+  @OneToOne(() => CompanyAddress)
+  @JoinColumn({ name: 'address_id' })
+  address: CompanyAddress;
+
+  @OneToOne(() => CompanyPhone)
+  @JoinColumn({ name: 'phone_id' })
+  phone: CompanyPhone;
 }
