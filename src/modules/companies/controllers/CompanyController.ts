@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import CompanyDetailsService from '../services/CompanyDetailsService';
 import CreateCompanyService from '../services/CreateCompanyService';
+import DeleteCompanyService from '../services/DeleteCompanyService';
 import ListCompaniesService from '../services/ListCompaniesService';
 import UpdateCompanyAddressService from '../services/UpdateCompanyAddressService';
 import UpdateCompanyPhoneService from '../services/UpdateCompanyPhoneService';
@@ -112,5 +113,15 @@ export default class CompanyController {
     });
 
     return response.status(200).json(phones);
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const delete_company = new DeleteCompanyService();
+
+    const deleted = await delete_company.execute({ id });
+
+    return response.status(200).json(deleted);
   }
 }

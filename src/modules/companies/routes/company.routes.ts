@@ -16,4 +16,6 @@ router.put('/update_address/:id', controller.updateAddress);
 
 router.put('/update_phones/:id', controller.updatePhones);
 
+router.delete('/:id', controller.delete);
+
 export default router;
