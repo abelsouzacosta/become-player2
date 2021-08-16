@@ -35,10 +35,10 @@ export default class Company {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @Column()
-  address_id: string;
+  // @Column()
+  // address_id: string;
 
-  @OneToOne(() => CompanyAddress)
-  @JoinColumn({ name: 'address_id' })
-  address: CompanyAddress;
+  // @OneToOne(() => CompanyAddress)
+  // @JoinColumn({ name: 'address_id' })
+  // address: CompanyAddress;
 }
