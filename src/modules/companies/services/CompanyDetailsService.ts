@@ -19,7 +19,7 @@ export default class CompanyDetailsService {
       where: {
         id,
       },
-      relations: ['address'],
+      relations: ['address', 'phone'],
     });
 
     if (!company) throw new ApplicationError('Company not found');
