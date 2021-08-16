@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import CompanyDetailsService from '../services/CompanyDetailsService';
 import CreateCompanyService from '../services/CreateCompanyService';
 import ListCompaniesService from '../services/ListCompaniesService';
+import UpdateCompanyAddressService from '../services/UpdateCompanyAddressService';
 import UpdateCompanyService from '../services/UpdateCompanyService';
 
 export default class CompanyController {
@@ -58,5 +59,38 @@ export default class CompanyController {
     });
 
     return response.status(200).json(company);
+  }
+
+  public async updateAddress(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
+    const { id } = request.params;
+    const {
+      descricao_tipo_logradouro,
+      logradouro,
+      numero,
+      complemento,
+      bairro,
+      cep,
+      uf,
+      municipio,
+    } = request.body;
+
+    const updateAddress = new UpdateCompanyAddressService();
+
+    const address = await updateAddress.execute({
+      id,
+      descricao_tipo_logradouro,
+      logradouro,
+      numero,
+      complemento,
+      bairro,
+      cep,
+      uf,
+      municipio,
+    });
+
+    return response.status(200).json(address);
   }
 }

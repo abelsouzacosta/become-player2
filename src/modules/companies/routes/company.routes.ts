@@ -12,4 +12,6 @@ router.get('/:id', controller.details);
 
 router.put('/:id', controller.update);
 
+router.put('/update_address/:id', controller.updateAddress);
+
 export default router;
