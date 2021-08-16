@@ -10,4 +10,6 @@ router.post('/', controller.create);
 
 router.get('/:id', controller.details);
 
+router.put('/:id', controller.update);
+
 export default router;
