@@ -55,4 +55,4 @@ TYPEORM_DATABASE =
 
 Os endpoints da aplicação estão documentados abaixo
 
-[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Become%20Player%202&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fabelsouzacosta%2Fhivelabs-challenge-endpoints%2Fmaster%2FENDPOINTS-PLAYER2%3Ftoken%3DAHJQ6XFZ27EJMUOZ5X6T5TLBDMEL4)
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Player%202&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fabelsouzacosta%2Fhivelabs-challenge-endpoints%2Fmaster%2Fplayer2-final%3Ftoken%3DAHJQ6XDCXJM73XNG6USUI4LBDMFJU)
