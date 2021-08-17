@@ -1,8 +1,11 @@
+import isAuthenticated from '@shared/http/middlewares/isAuthenticated';
 import { Router } from 'express';
 import CompanyController from '../controllers/CompanyController';
 
 const router = Router();
 const controller = new CompanyController();
+
+router.use(isAuthenticated);
 
 router.get('/', controller.list);
 
